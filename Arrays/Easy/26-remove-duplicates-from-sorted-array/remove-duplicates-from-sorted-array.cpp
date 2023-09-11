@@ -1,3 +1,9 @@
+//brute force using hashset 
+
+
+//time= O(nlogn) + O(n)= logn for one insertion iinto the set insertion 
+//space= O(n)
+
 // class Solution {
 // public:
 //     int removeDuplicates(vector<int>& nums) {
@@ -12,6 +18,8 @@
 //         return a.size();
 //     }
 // };
+
+//optimal using two pointers 
  class Solution {
  public:
 int removeDuplicates(vector<int>& arr)
