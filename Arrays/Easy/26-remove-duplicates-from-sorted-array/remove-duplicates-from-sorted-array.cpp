@@ -20,6 +20,9 @@
 
 //optimal using two pointers 
 
+// Time Complexity: O(N)
+// Space Complexity: O(1)
+
 class Solution {
 public:
 int removeDuplicates(vector<int>& a){
