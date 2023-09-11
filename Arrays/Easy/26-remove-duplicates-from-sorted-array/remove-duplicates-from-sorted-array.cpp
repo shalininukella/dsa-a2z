@@ -1,5 +1,4 @@
-//brute force using hashset 
-
+//brute force 
 
 //time= O(nlogn) + O(n)= logn for one insertion iinto the set insertion 
 //space= O(n)
@@ -20,17 +19,20 @@
 // };
 
 //optimal using two pointers 
- class Solution {
- public:
-int removeDuplicates(vector<int>& arr)
-{
-  int i = 0;
-  for (int j = 1; j < arr.size(); j++) {
-    if (arr[i] != arr[j]) {
-      i++;
-      arr[i] = arr[j];
+
+class Solution {
+public:
+int removeDuplicates(vector<int>& a){
+   int i=0, j=1;
+    while(j<a.size()){
+         if(a[i]==a[j]){
+             j++;
+         }
+         else{
+         i++;
+         a[i]=a[j];
+         }
     }
-  }
-  return i + 1;
+    return i+1;
 }
- };
+};
