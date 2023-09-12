@@ -23,10 +23,10 @@ public:
 
 */
 
-//using reversal algorithm 
-class Solution {
+//using reversal algorithm as well as user defined reverse 
+/*class Solution {
     public :
-    void reverse(vector<int>& a , int start, int end){
+    void reverse_f(vector<int>& a , int start, int end){
         while(start<=end){
             int temp = a[start];
             a[start]= a[end];
@@ -41,8 +41,27 @@ class Solution {
              return;
          }
          k=k%n;
-         reverse(a, 0, n-k-1);
-         reverse(a, n-k, n-1);
-         reverse(a, 0, n-1);
+         reverse_f(a, 0, n-k-1);
+         reverse_f(a, n-k, n-1);
+         reverse_f(a, 0, n-1);
      }
 };
+*/
+
+
+//using reversal algorithm inbuilt reverse 
+class Solution {
+    public :
+     void rotate(vector<int>& a, int k ){
+         int n = a.size();
+         if(k==0){
+             return;
+         }
+         k=k%n;
+         reverse(a.begin(), a.begin()+n-k);
+         reverse(a.begin()+n-k, a.end());
+         reverse(a.begin(), a.end());
+     }
+};
+
+
