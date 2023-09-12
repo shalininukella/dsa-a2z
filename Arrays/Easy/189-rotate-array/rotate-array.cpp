@@ -19,11 +19,15 @@ public:
         nums.erase(nums.begin() + n - k, nums.end()); // Remove the last k elements from nums
         nums.insert(nums.begin(), temp.begin(), temp.end()); // Insert the elements from temp at the beginning of nums
     }
-};
+}; */
 
-*/
 
 //using reversal algorithm as well as user defined reverse 
+
+// time complexity O(n)
+// space complexity O(1)
+
+
 /*class Solution {
     public :
     void reverse_f(vector<int>& a , int start, int end){
@@ -50,6 +54,8 @@ public:
 
 
 //using reversal algorithm inbuilt reverse 
+// time complexity O(n)
+// space complexity O(1)
 class Solution {
     public :
      void rotate(vector<int>& a, int k ){
