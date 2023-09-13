@@ -24,11 +24,8 @@ public:
 class Solution {
     public :
     int singleNumber(vector<int>& a){
-        int n = a.size(), x=0;
-        if (n==1){
-            return a[0];
-        }
-        for (int i=0; i<n ; i++){
+        int x=0;
+        for (int i=0; i<a.size() ; i++){
            x^=a[i];
         }
         return x;
