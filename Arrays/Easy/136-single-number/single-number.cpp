@@ -1,16 +1,16 @@
 //using xor - most optimized 
 // time = o(n)
 // space = o(1)
-// class Solution {
-//     public :
-//     int singleNumber(vector<int>& a){
-//         int x=0;
-//         for (int i=0; i<a.size() ; i++){
-//            x^=a[i];
-//         }
-//         return x;
-//     }
-// };
+class Solution {
+    public :
+    int singleNumber(vector<int>& a){
+        int x=0;
+        for (int i=0; i<a.size() ; i++){
+           x^=a[i];
+        }
+        return x;
+    }
+};
 
 
 
@@ -50,7 +50,9 @@
 };*/
 
 
-//using unordered_map
+/*//using unordered_map
+// Time Complexity: O(N*logM) + O(M)
+//space complexity: O(M), M= (N/2) + 1
 class Solution {
 public:
     int singleNumber(vector<int>& a) {
@@ -59,19 +61,51 @@ public:
             return a[0];
         }
         unordered_map<int, int> mp;
+
+        //time = O(nlogm), size of map= m=()n/2)+1 i.e every element is twice + 1 element which occurs once 
         for( int i=0;i<n;i++){
             mp[a[i]]++;
         }
+
+        //time = o(m)
         for(auto i : mp){
             if(i.second == 1){
                 return i.first;
             }
         }
         return -1;
-
     }
-};
+};*/
 
+
+/* 
+//brute force 
+//Time Complexity: O(N2
+//Space : O(1)
+class Solution {
+public:
+    int singleNumber(vector<int>& a) {
+        int n = a.size();
+for (int i = 0; i < n; i++) {
+        int num = arr[i]; // selected element
+        int cnt = 0;
+
+        //find the occurrence using linear search:
+        for (int j = 0; j < n; j++) {
+            if (arr[j] == num)
+                cnt++;
+        }
+
+        // if the occurrence is 1 return ans:
+        if (cnt == 1) return num;
+    }
+
+    //This line will never execute
+    //if the array contains a single element.
+    return -1;
+}
+};
+*/
 
 /* TLE not at all optimised but works 
 class Solution {
