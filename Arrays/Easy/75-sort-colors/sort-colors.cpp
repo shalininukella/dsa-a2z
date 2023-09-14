@@ -1,3 +1,6 @@
+// my solution 
+//time complexity is o(n) and space complexity O(1)
+
 class Solution {
 public:
     void sortColors(vector<int>& a) {
@@ -15,3 +18,6 @@ public:
         
     }
 };
+
+
+// using two pointers 
