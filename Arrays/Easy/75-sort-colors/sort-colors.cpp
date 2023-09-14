@@ -1,5 +1,5 @@
 // my solution 
-//time complexity is o(n) and space complexity O(1)
+//time complexity is o(n) and space complexity O(1) because only 3 elements in the map hence constant space o(1)
 /*
 class Solution {
 public:
@@ -25,7 +25,7 @@ public:
 // using duscth flag algorithm
 // time complexity= o(n)
 // space = o(1)
-/*class Solution {
+class Solution {
 public:
     void sortColors(vector<int>& a) {
         int n= a.size();
@@ -46,11 +46,13 @@ public:
     }
     }
 
-}; */
+};
 
 
 // using count variable 
-class Solution{
+// time complexity= o(n)
+// space = o(1)
+/*class Solution{
 public:
     void sortColors(vector<int>& a) {
         int n= a.size();
@@ -77,3 +79,4 @@ public:
         }
     } 
 };
+*/
