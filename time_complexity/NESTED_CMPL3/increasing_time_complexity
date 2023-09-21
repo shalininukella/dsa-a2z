@@ -1,0 +1,30 @@
+Which of the given options provides the increasing order of complexity of functions f1, f2, f3 and f4:
+
+f1(n) = 2^n
+
+f2(n) = n^(3/2)
+
+f3(n) = nLogn
+
+f4(n) = n^(Logn)
+
+
+
+To determine the increasing order of complexity for the given functions f1, f2, f3, and f4, let's compare their growth rates:
+1. f1(n) = 2^n:
+   - Exponential growth.
+   - The fastest-growing among the provided functions.
+
+2. f4(n) = n^(Logn):
+   - Exponential growth with a logarithmic exponent.
+   - Slower growth compared to f1.
+
+3. f2(n) = n^(3/2):
+   - Polynomial growth with an exponent of 3/2.
+   - Slower growth compared to f1 and f4 but faster than f3.
+
+4. f3(n) = n * log(n):
+   - Log-linear growth.
+   - The slowest-growing among the provided functions.
+
+ The correct increasing order of complexity is indeed 1 (f1), 4 (f4), 2 (f2), and 3 (f3).
