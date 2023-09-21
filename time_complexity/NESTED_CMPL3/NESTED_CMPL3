@@ -1,0 +1,45 @@
+NESTED_CMPL3
+Programming
+Time Complexity
+Easy
+27.0% Success
+
+Asked In: AMAZON
+
+What is time complexity of following code :
+
+        int count = 0;
+        for (int i = N; i > 0; i /= 2) {
+            for (int j = 0; j < i; j++) {
+                count += 1;
+            }
+        }
+Options:
+
+O(N * N)
+O(N * log N)
+O(N * log(log(N)))
+O(N)
+O(N * Sqrt(N))
+
+____________________________________________________________________________________________________________________________________________________________________________________
+ANSWER : O(N)
+
+When i = N, the inner loop runs N times.
+When i = N/2, the inner loop runs N/2 times.
+When i = N/4, the inner loop runs N/4 times.
+And so on...
+
+N + N/2 + N/4 + N/8 + ... + 1
+
+This is a geometric series with a common ratio of 1/2. You can calculate the sum of this series using the formula for the sum of a geometric series:
+
+Sum = a / (1 - r)
+
+where a is the first term and r is the common ratio. In this case, a = N and r = 1/2.
+
+So, the total number of iterations is:
+
+Sum = N / (1 - 1/2) = N / (1/2) = 2N
+Hence O(n)
+
