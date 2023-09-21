@@ -1,0 +1,38 @@
+GCD_CMPL
+Programming
+Time Complexity
+Easy
+52.0% Success
+
+In the following C++ function, let n >= m.
+
+int gcd(int n, int m) {
+  if (n%m ==0) return m;
+  if (n < m) swap(n, m);
+  while (m > 0) {
+    n = n%m;
+    swap(n, m);
+  }
+  return n;
+}
+What is the time complexity of the above function assuming n > m?. 
+
+Θ symbol represents theta notation and Ω symbol represents omega notation.
+
+Show similar questions
+Θ(logn)
+Ω(n)
+Θ(loglogn)
+Θ(sqrt(n))
+
+ANSWER : Θ(logn)
+The provided C++ function calculates the greatest common divisor (GCD) of two integers `n` and `m` using the Euclidean algorithm. Let's analyze the time complexity of this function.
+
+1. In the worst case, when `n` and `m` are relatively prime (i.e., they have no common factors except 1), the Euclidean algorithm will run until `m` becomes 0. This usually happens when `n` and `m` are consecutive Fibonacci numbers.
+
+2. The number of iterations needed for `m` to become 0 in the worst case is bounded by the Fibonacci number sequence, which grows exponentially. The Fibonacci sequence has a growth rate of approximately Φ (phi), the golden ratio, which is roughly 1.618.
+
+3. Therefore, the number of iterations is roughly proportional to log base Φ of `n`. This means that the time complexity of the `gcd` function is Θ(log(n)) in the worst case.
+
+So, the time complexity of the provided function, assuming `n > m`, is Θ(log(n)). This is also the same as Θ(log(max(n, m))), as the time complexity depends on the larger of the two numbers. The function does not have a Ω notation because its best-case time complexity is also Θ(log(n)), 
+and it doesn't have a significant worst-case to best-case difference.
