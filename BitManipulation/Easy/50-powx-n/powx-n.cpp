@@ -14,12 +14,7 @@ public:
             a = (a * a);
             sign = sign >> 1;
         }
-        if( b > 0){
-        return ans;
-    }
-    else {
-        return 1/ans;
-    }
+        return b<0?1/ans:ans;
     }
 };
         
