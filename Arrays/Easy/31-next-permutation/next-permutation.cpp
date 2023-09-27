@@ -1,21 +1,6 @@
-// class Solution {
-// public:
-//     void nextPermutation(vector<int>& a) {
-//         int n = a.size();
-
-//         vector<int> b(a);
-//         sort(b.begin(), b.end(), greater<int>());
-    
-//         if(a==b){
-//             sort(a.begin(), a.end());
-//         }
-//          else{
-//              swap(a[n-1], a[n-2]);
-//          }
-//     }
-// };
-
-
+/*Brute force is to list all the permutations, search for the given permutation in the question 
+and then find the immediate next permutation on the searched question in the question
+*/
 
 //1) using next_permutation funtion 
 //time complexity = O(N)
