@@ -62,7 +62,7 @@ The brute force solution has three steps:
 <p>Find all possible permutations of given array nums.
 Linearly search for the given permutation.
 Return the very next permutation of the given found permutation.
-Time Complexity ⏳
+<h3>Time Complexity ⏳</h3>
 Generating All Permutations: Generating all permutations of an array with N elements has a time complexity of O(N!). This is because there are N! (N factorial) possible permutations of an array of size N.</p>
 
 Finding a Particular Arrangement Linearly: After generating all permutations, you would need to linearly search for a particular arrangement. This search would also take O(N!) time in the worst case because you might need to go through all permutations to find the desired one.
@@ -71,30 +71,30 @@ Returning the Next Permutation of the Found Permutation: Once you've found the d
 
 Thus, the time complexity of this approach would be O(N!) due to the generation of all permutations. It's an inefficient approach, especially for large values of N, and is likely to give a TLE.
 
-Space Complexity 🚀
+<h3>Space Complexity 🚀</h3>
 The space complexity for generating all permutations of an array with N elements is O(N!) because you're storing N! different permutations.
 
-Approach 2: Better Solution (only for cpp users) - Using next_permutation() fun🧐
+<h3>Approach 2: Better Solution (only for cpp users) - Using next_permutation() fun🧐 </h3>
 Approach 🛠️
 We can use the next_permutation() function. The next_permutation function is a part of the C++ Standard Library's <algorithm> header. It's used to generate the next lexicographically greater permutation of a vector.
 
-Time Complexity ⏳
+<h3>Time Complexity ⏳</h3>
 The time complexity of the next_permutation() function is O(N), where N is the size of the input vector (nums in this case).
 The function traverses the vector from right to left to find the first pair of two consecutive elements such that the left element is less than the right element. This operation takes O(N) time in the worst case.
 The subsequent operations, such as finding the smallest greater element and reversing the subarray, also take O(N) time in total.
 So, the overall time complexity is O(N).
 
-Space Complexity 🚀
+<h3>Space Complexity 🚀</h3>
 The next_permutation function operates in-place and does not use any additional memory that scales with the input size. Therefore, the space complexity of the nextPermutation function is O(1), which means it uses constant extra memory.
 
-Code 💻
+<h3>Code 💻</h3>
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
         next_permutation(nums.begin(),nums.end());
     }
 };
-Approach 3: Optimized Solution 🧐
+<h3>Approach 3: Optimized Solution 🧐</h3>
 Approach 🛠️
 Like in a dictionary the very next word to a given word is almost the same except for a very few alphabets, e.g. in a dictionary Fire would come after fira. Notice how the first three alphabets are the same?
 Observing this lexicographical order in an English dictionary, we apply a similar approach in the array as well.
@@ -107,13 +107,13 @@ In the array example taken above, index 1 was the breakindex and we traverse fro
 Now, we swap the breakindex element with this leastgreat index element.
 Now we reverse the array from breakindex+1 to n-1.
 -Edge case: It may happen that the array in the input is the last possible maximum permutation possible for the elements like: [5,4,3,3,2,0], so the next permutation will be the reverse of it which is the first smallest possible permutation of the elements. So in case we do not find a breakpoint like in this case, we simply reverse the given nums array.
-Time Complexity ⏳
+<h3>Time Complexity ⏳</h3>
 The time complexity of this approach is linear. We traverse the array twice: first to find the breakpoint and then to find the least greater element. Each traversal takes O(N) time.tore indices and values.
 
-Space Complexity 🚀
+<h3>Space Complexity 🚀</h3>
 The space complexity is constant O(1) because the algorithm operates in-place without using any additional data structures that scale with the input size.
 
-Code 💻
+<h3>Code 💻</h3>
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
