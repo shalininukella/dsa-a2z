@@ -38,30 +38,65 @@
 //     }
 // };
 
-//better approach using sorting
+// //better approach using sorting(mine)
+// //tc=o(nlogn)+o(n)
+// //sc=o(1)
+// class Solution {
+// public:
+//     int longestConsecutive(vector<int>& a) {
+//         if(a.size()==0){
+//             return 0;
+//         }
+//         int longest=1;
+//         int cnt=1;
+//         sort(a.begin(), a.end());
+//         for(int i =0;i<a.size()-1;i++){
+//             if(a[i+1]-a[i]==1){
+//                 cnt++;
+//             }
+//             else if (a[i+1]-a[i]==0){
+//                 continue;
+//             }
+//             else if(a[i+1]-a[i]!=1){
+//                 cnt=1;
+//             }
+//             longest=max(longest, cnt);
+//         }
+//         return longest;
+//     }
+// };
+
+
+//better approach using sorting(striver)
 //tc=o(nlogn)+o(n)
 //sc=o(1)
 class Solution {
 public:
     int longestConsecutive(vector<int>& a) {
-        if(a.size()==0){
-            return 0;
-        }
+        int n = a.size();
+        if(n==0) return 0;
+         
+        int lastSmall=INT_MIN; 
         int longest=1;
-        int cnt=1;
+        int cnt=0; //or cnt=1, lastSmall=a[0], for loop i=1 to n
+
         sort(a.begin(), a.end());
-        for(int i =0;i<a.size()-1;i++){
-            if(a[i+1]-a[i]==1){
+
+        for(int i=0;i<n;i++){
+            if(lastSmall==a[i]-1){
                 cnt++;
+                lastSmall=a[i];
             }
-            else if (a[i+1]-a[i]==0){
-                continue;
-            }
-            else if(a[i+1]-a[i]!=1){
+
+            //if lastSmall==a[i], then do ntg just continue the loop, hence if the lastSmall!=a[i], then the sequence ended there and hence cnt=1 and fresh start with lastSmall as the current element
+            else if (a[i]!=lastSmall){
                 cnt=1;
+                lastSmall=a[i];
             }
             longest=max(longest, cnt);
         }
         return longest;
     }
 };
+
+
