@@ -3,7 +3,6 @@ public:
     vector<int> rearrangeArray(vector<int>& a) {
         vector<int> pos;
         vector<int> neg;
-
         for(int i=0;i<a.size();i++){
             if(a[i]>0)
                 pos.push_back(a[i]);
