@@ -37,8 +37,18 @@ and then find the immediate next permutation on the searched question in the que
 //             reverse(a.begin(), a.end());
 //         } 
 
- /* if brk pt is just smaller than the elemnet which we are searchig from the end(greater) swap it. Since the array is sorted in the decresing order till that brk point and we are finding the element which is just greater than the brkpnt, so when we swap it, the subarray which was sorted in the decreasing order will still be in the decreasion order. hence after reversing that subarray we'll get an increasning order of that subarry just after the position where brkpt used to present. Now again this continues from the ending, the searching for the brk pnt, swapping and reversing, since the permutations are starting from the ending means 1,2,3,4,5 -> 1,2,3,5,4 so here last two have changed, then next will be 1,2,4,3,5 now here brkpoint is 3 and last 3 have changed including 3. now since we've swapped 3 with 4, now we'll again start the permutaion from the ending for every 2 elements , then 3 elements then 4 elements..... */
-//            else {
+ /* if brk pt is just smaller than the elemnet which we are searchig from the end(greater) swap it. 
+ Since the array is sorted in the decresing order till that brk point and we are finding the element
+which is just greater than the brkpnt, so when we swap it, the subarray which was sorted in the 
+decreasing order will still be in the decreasion order. hence after reversing that subarray we'll
+ get an increasning order of that subarry just after the position where brkpt used to present. 
+ Now again this continues from the ending, the searching for the brk pnt, swapping and reversing, 
+ since the permutations are starting from the ending means 1,2,3,4,5 -> 1,2,3,5,4 so here last 
+ two have changed, then next will be 1,2,4,3,5 now here brkpoint is 3 and last 3 have changed 
+ including 3. now since we've swapped 3 with 4, now we'll again start the permutaion from the 
+ ending for every 2 elements , then 3 elements then 4 elements..... */
+//            
+//          else {
 //             for (int j = n - 1; j >= i; j--) {
 //                 if (a[brkpnt] < a[j]) {
 //                     greater = j;
@@ -54,92 +64,73 @@ and then find the immediate next permutation on the searched question in the que
 //3)or use brk pt's loop as i=n-2 to 0 ans compare i and i+1 --- striver 
 //tc=O(N)
 //sc=o(1)
+// class Solution {
+// public:
+//     void nextPermutation(vector<int>& nums) {
+//         //find the breakpoint
+//         int breakpoint=-1;
+//         int n=nums.size();
+//         for(int i=n-2;i>=0;i--){
+//           if(nums[i]<nums[i+1]){
+//             breakpoint=i;
+//             break;
+//           }  
+//         } 
+//         if(breakpoint==-1){reverse(nums.begin(),nums.end());return;}
+        
+//         //find least greater of element at the breakpoint
+//         int leastgreater=-1; 
+//         int leastGvalue=101;
+//         for(int i=n-1;i>breakpoint;i--){
+//             if(nums[i]>nums[breakpoint]){
+//                 if(nums[i]<leastGvalue){
+//                     leastgreater=i;
+//                     leastGvalue=nums[i];
+//                 }
+//             }
+//         }
+
+//         //now swap breakpoint with leastgreater
+//         swap(nums[breakpoint],nums[leastgreater]);
+        
+//         //reverse everything after the breakpoint
+//         reverse(nums.begin()+breakpoint+1,nums.end());
+// return;
+// }
+// };
+
+//4) striver , same tc = o(n), sc=o(1)
+
 class Solution {
 public:
-    void nextPermutation(vector<int>& nums) {
-        //find the breakpoint
-        int breakpoint=-1;
-        int n=nums.size();
-        for(int i=n-2;i>=0;i--){
-          if(nums[i]<nums[i+1]){
-            breakpoint=i;
-            break;
-          }  
-        } 
-        if(breakpoint==-1){reverse(nums.begin(),nums.end());return;}
+    void nextPermutation(vector<int>& a) {
+        int brkpnt = -1;
+        int n = a.size();
         
-        //find least greater of element at the breakpoint
-        int leastgreater=-1; 
-        int leastGvalue=101;
-        for(int i=n-1;i>breakpoint;i--){
-            if(nums[i]>nums[breakpoint]){
-                if(nums[i]<leastGvalue){
-                    leastgreater=i;
-                    leastGvalue=nums[i];
-                }
+        // Find the breakpoint
+        for (int i = n - 2; i >= 0; i--) {
+            if (a[i] < a[i + 1]) {
+                brkpnt = i;
+                break;
             }
         }
-
-        //now swap breakpoint with leastgreater
-        swap(nums[breakpoint],nums[leastgreater]);
         
-        //reverse everything after the breakpoint
-        reverse(nums.begin()+breakpoint+1,nums.end());
-return;
-}
+        // If no breakpoint, it's already the last permutation, hence reverse the whole array
+        if (brkpnt == -1) {
+            reverse(a.begin(), a.end());
+            return;  // Return immediately after reversing the entire array
+        }
+        
+        // Find a number from brkpnt+1 index to n-1 which is just greater than the brkpnt element
+        for (int i = n - 1; i > brkpnt; i--) {
+            if (a[i] > a[brkpnt]) {
+                swap(a[i], a[brkpnt]);
+                break;
+            }
+        }
+        
+        // Reverse the array from brkpnt+1 to n-1
+        reverse(a.begin() + brkpnt + 1, a.end());
+    }
 };
 
-/*4) striver , same tc = o(n), sc=o(1)
-
-#include <bits/stdc++.h>
-using namespace std;
-
-vector<int> nextGreaterPermutation(vector<int> &A) {
-    int n = A.size(); // size of the array.
-
-    // Step 1: Find the break point:
-    int ind = -1; // break point
-    for (int i = n - 2; i >= 0; i--) {
-        if (A[i] < A[i + 1]) {
-            // index i is the break point
-            ind = i;
-            break;
-        }
-    }
-
-    // If break point does not exist:
-    if (ind == -1) {
-        // reverse the whole array:
-        reverse(A.begin(), A.end());
-        return A;
-    }
-
-    // Step 2: Find the next greater element
-    //         and swap it with arr[ind]:
-
-    for (int i = n - 1; i > ind; i--) {
-        if (A[i] > A[ind]) {
-            swap(A[i], A[ind]);
-            break;
-        }
-    }
-
-    // Step 3: reverse the right half:
-    reverse(A.begin() + ind + 1, A.end());
-
-    return A;
-}
-
-int main()
-{
-    vector<int> A = {2, 1, 5, 4, 3, 0, 0};
-    vector<int> ans = nextGreaterPermutation(A);
-
-    cout << "The next permutation is: [";
-    for (auto it : ans) {
-        cout << it << " ";
-    }
-    cout << "]n";
-    return 0;
-}
-*/
