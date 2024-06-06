@@ -39,12 +39,12 @@ class Solution {
 
         vector<vector<int>> generate(int n)
         {
-            vector<vector<int>> pascall;
+            vector<vector<int>> pascal;
 
             for(int row=1;row<=n;row++){
-                pascall.push_back(generateRow(row));
+                pascal.push_back(generateRow(row));
             }
 
-            return pascall;
+            return pascal;
         }
 };
