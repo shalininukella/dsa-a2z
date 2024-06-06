@@ -56,7 +56,7 @@ public:
 
 
 //2) better - using maps
-//tc = O(N), sc = o(n)
+//tc = O(Nlogn), sc = o(n) and if we use unordered_map the O(n)-avg,best and o(n^2)- worst
 
 // vector<int> majorityElement(vector<int> v) {
 //     int n = v.size(); //size of the array
