@@ -96,7 +96,11 @@
 // };
 
 
-//Optimal
+//3) Optimal
+//tc: O(nlogn) + O(n^2)
+//sc: O(no. of quadruplets), This space is only used to store the answer. 
+//We are not using any extra space to solve this problem. 
+//So, from that perspective, space complexity can be written as O(1).
 
 class Solution {
 public:
