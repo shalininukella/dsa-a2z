@@ -6,29 +6,64 @@
 //Space Complexity: 
 //O(n)
 
+// class Solution {
+//   public:
+//     vector<int> maxSlidingWindow(vector<int>& arr, int k) {
+//         // your code here
+//         int n = arr.size();
+//         deque<int>q;
+//         int i=0,j=0;
+//         vector<int>res;
+//         while(j<n){
+//             while(!q.empty() && q.back()<arr[j]) q.pop_back();
+//             q.push_back(arr[j]);
+//             if(j-i+1<k) j++;
+//             else if(j-i+1==k){
+//                 res.push_back(q.front());
+//                 if(q.front()==arr[i]) q.pop_front();
+//                 i++;
+//                 j++;
+//             }
+//         }
+//         return res;
+//     }
+// };
+
+
 class Solution {
   public:
-    vector<int> maxSlidingWindow(vector<int>& arr, int k) {
+    vector<int> maxSlidingWindow(vector<int>& a, int k) {
         // your code here
-        int n = arr.size();
-        deque<int>q;
         int i=0,j=0;
-        vector<int>res;
+        int n = a.size();
+        deque<int> dq;
+        vector<int> ans;
+
         while(j<n){
-            while(!q.empty() && q.back()<arr[j]) q.pop_back();
-            q.push_back(arr[j]);
-            if(j-i+1<k) j++;
-            else if(j-i+1==k){
-                res.push_back(q.front());
-                if(q.front()==arr[i]) q.pop_front();
+            //calculation
+            while(!dq.empty() && a[j]>dq.back()){
+                dq.pop_back();
+            }
+
+            dq.push_back(a[j]);
+
+            if(j-i+1 < k){
+                j++;
+            }
+
+            else if (j-i+1 == k){
+                //ans
+                ans.push_back(dq.front());
+                if(a[i]==dq.front()){
+                    dq.pop_front();
+                }
                 i++;
                 j++;
             }
         }
-        return res;
+        return ans;
     }
 };
-
 
 //2)
 //OMG!!!! my solution - leetcode hard - sliding window - fixed size - might not be optimal
