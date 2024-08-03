@@ -35,23 +35,63 @@
 //     }
 // };
 
+// //optimal - striver
+// //tc: O(n)
+// //sc: o(n) for ans vector
+
+// class Solution {
+// public:
+//     vector<vector<int>> merge(vector<vector<int>>& intervals) {
+//         int n = intervals.size();
+//         sort(intervals.begin(), intervals.end());
+//         vector<vector<int>> ans;
+//         //select an interval
+//         for(int i=0;i<n; i++){
+//             if(ans.empty() || intervals[i][0] > ans.back()[1]){
+//                 ans.push_back({intervals[i][0], intervals[i][1]});
+//             }
+
+//             else{
+//                 //intervals[i][0] <= ans.back()[1]
+//                 ans.back()[1] = max(ans.back()[1], intervals[i][1]);
+//             }
+//         }
+//         return ans;
+//     }
+// };
+
+//brute force 
+//tc: 
+//sc: o(n) for ans vector
 
 class Solution {
 public:
-    vector<vector<int>> merge(vector<vector<int>>& intervals) {
-        int n = intervals.size();
-        sort(intervals.begin(), intervals.end());
+    vector<vector<int>> merge(vector<vector<int>>& a) {
+        int n = a.size();
+        sort(a.begin(), a.end());
         vector<vector<int>> ans;
+        
         //select an interval
         for(int i=0;i<n; i++){
-            if(ans.empty() || intervals[i][0] > ans.back()[1]){
-                ans.push_back({intervals[i][0], intervals[i][1]});
+            int start = a[i][0];
+            int end = a[i][1];
+            if(!ans.empty() && ans.back()[1] >= end){
+                //skip selecting the intervals which can already be the part of the last interval present in the ans vector
+                continue;
             }
 
-            else{
-                //intervals[i][0] <= ans.back()[1]
-                ans.back()[1] = max(ans.back()[1], intervals[i][1]);
+            for(int j=i+1;j<n;j++){
+                //if the current jth interval can be merged with the selected ith interval
+                if(end >= a[j][0]){
+                    end = max(end, a[j][1]);
+                }
+
+                else{
+                    //can't be merged i.e end < a[j][0]
+                    break; //out of jth loop
+                }
             }
+            ans.push_back({start, end});
         }
         return ans;
     }
