@@ -1,4 +1,4 @@
-// Mine
+// LC Solutions
 // TC : O(logn)
 // SC: O(1)
 
