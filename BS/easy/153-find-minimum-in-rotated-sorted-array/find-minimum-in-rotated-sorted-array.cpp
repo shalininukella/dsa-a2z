@@ -1,3 +1,7 @@
+// Mine
+// TC : O(logn)
+// SC: O(1)
+
 // class Solution {
 // public:
 //     int findMin(vector<int>& nums) {
@@ -30,8 +34,9 @@
 // };
 
 
-// #include <vector>
-// using namespace std;
+// Mine
+// TC : O(logn)
+// SC: O(1)
 
 // class Solution {
 // public:
@@ -69,9 +74,9 @@
 // };
 
 
-
-#include <vector>
-using namespace std;
+// Stirver
+// TC : O(logn)
+// SC: O(1)
 
 class Solution {
 public:
@@ -80,9 +85,9 @@ public:
         int mini = INT_MAX;
         
         // Handle the case where the array is not rotated
-            if (a[l] <= a[h]) {
-                return a[l];
-            }
+        if (a[l] <= a[h]) {
+            return a[l];
+        }
 
         while (l <= h) {
             int m = (l + h) / 2;
