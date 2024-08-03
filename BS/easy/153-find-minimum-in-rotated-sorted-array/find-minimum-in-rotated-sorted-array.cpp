@@ -30,6 +30,46 @@
 // };
 
 
+// #include <vector>
+// using namespace std;
+
+// class Solution {
+// public:
+//     int findMin(vector<int>& a) {
+//         int l = 0, h = a.size() - 1;
+
+//         // Handle the case where the array is not rotated
+//         if (a[l] <= a[h]) {
+//             return a[l];
+//         }
+
+//         while (l <= h) {
+//             int m = (l + h) / 2;
+
+//             // Check if mid element is the minimum
+//             if (m > 0 && a[m] < a[m - 1]) {
+//                 return a[m];
+//             }
+//             // Check if mid+1 element is the minimum
+//             if (m < a.size() - 1 && a[m] > a[m + 1]) {
+//                 return a[m + 1];
+//             }
+
+//             // Adjust search range
+//             if (a[m] >= a[l]) {
+//                 l = m + 1;
+//             } else {
+//                 h = m - 1;
+//             }
+//         }
+
+//         // This line should never be reached
+//         return -1;
+//     }
+// };
+
+
+
 #include <vector>
 using namespace std;
 
@@ -37,33 +77,29 @@ class Solution {
 public:
     int findMin(vector<int>& a) {
         int l = 0, h = a.size() - 1;
-
+        int mini = INT_MAX;
+        
         // Handle the case where the array is not rotated
-        if (a[l] <= a[h]) {
-            return a[l];
-        }
+            if (a[l] <= a[h]) {
+                return a[l];
+            }
 
         while (l <= h) {
             int m = (l + h) / 2;
 
-            // Check if mid element is the minimum
-            if (m > 0 && a[m] < a[m - 1]) {
-                return a[m];
-            }
-            // Check if mid+1 element is the minimum
-            if (m < a.size() - 1 && a[m] > a[m + 1]) {
-                return a[m + 1];
+            if(a[l]<=a[m]){
+                //left half is sorted
+                mini = min(mini, a[l]);
+                l=m+1;
             }
 
-            // Adjust search range
-            if (a[m] >= a[l]) {
-                l = m + 1;
-            } else {
-                h = m - 1;
+            else{
+                //right half is sorted 
+                mini = min(mini, a[m]);
+                h=m-1;
             }
         }
-
-        // This line should never be reached
-        return -1;
+        return mini;
     }
 };
+
