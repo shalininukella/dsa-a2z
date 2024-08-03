@@ -11,9 +11,11 @@ public:
 //to ge the first occurence
         while(l<=h){
             int m = l + (h - l) / 2;
-            if(target<=a[m]){
-                if (a[m] == target) 
+            if (a[m] == target) {
                     first = m;
+                     h=m-1;
+            }
+            else if(target<=a[m]){
                 h=m-1;
             }
             else {
@@ -24,9 +26,11 @@ public:
         l=0,h=a.size()-1;
         while(l<=h){
             int m = l + (h - l) / 2;
-            if(a[m]<=target){
-                if (a[m] == target) 
-                    last = m;
+            if (a[m] == target){
+                last = m;
+                l=m+1;
+            }
+            else if(a[m]<=target){
                 l=m+1;
             }
             else{
