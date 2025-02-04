@@ -1,3 +1,24 @@
+/* my solution( beats 100s%)
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int n=nums.size();
+        int i=0;
+        for(int j=0; j<n;j++){
+            if(nums[i]!= 0){
+                i++;
+            }
+
+            else if(nums[i]==0 && nums[j]!=0){
+                swap(nums[i], nums[j]);
+                i++;
+            }
+        }
+    }
+};
+*/
+
 /* my solution( beats 80%)
 class Solution {
 public:
