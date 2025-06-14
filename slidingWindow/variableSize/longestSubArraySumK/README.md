@@ -1,5 +1,7 @@
 # 📌 Longest Subarray with Sum K
 
+https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1
+
 **Difficulty:** Medium  
 **Accuracy:** 24.64%  
 **Submissions:** 666K+  
